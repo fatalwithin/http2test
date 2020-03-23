@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: HostSubnet
+metadata:
+  name: f5-bigip-node01
+  annotations:
+    pod.network.openshift.io/fixed-vnid-host: "0"
+    pod.network.openshift.io/assign-subnet: "true"
+host: f5-bigip-node01
+hostIP: 192.168.167.15
