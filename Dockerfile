@@ -8,11 +8,13 @@ RUN chmod g+rwx /var/cache/nginx /var/run /var/log/nginx
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
+RUN mkdir -p /etc/nginx/ssl/
+
 COPY http2test-key.pem /etc/nginx/ssl/http2test-key.pem
 
-COPY https2test.pem /etc/nginx/ssl/http2test.pem
+COPY http2test.pem /etc/nginx/ssl/http2test.pem
 
-EXPOSE 443
+EXPOSE 4443
 
 EXPOSE 8081
 
