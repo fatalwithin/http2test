@@ -1,4 +1,5 @@
-```# Подготовка самоподписанных сертификатов для Nginx HTTP/2
+```
+# Подготовка самоподписанных сертификатов для Nginx HTTP/2
 
 sudo cp /etc/pki/tls/openssl.cnf /etc/ssl/http2test.cnf
 
@@ -10,7 +11,7 @@ req_extensions = v3_req # The extensions to add to a certificate request
 
 [ v3_req ]
 
-'''# Extensions to add to a certificate request
+# Extensions to add to a certificate request
 
 basicConstraints = CA:FALSE
 keyUsage = nonRepudiation, digitalSignature, keyEncipherment
