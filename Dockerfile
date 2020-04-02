@@ -14,6 +14,12 @@ COPY http2test-key.pem /etc/nginx/ssl/http2test-key.pem
 
 COPY http2test.pem /etc/nginx/ssl/http2test.pem
 
+RUN mkdir -p /var/www/static/
+
+COPY index.html /var/www/static/index.html
+
+COPY index_http2.html /usr/share/nginx/html/index.html
+
 EXPOSE 4443
 
 EXPOSE 8081
