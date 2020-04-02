@@ -1,10 +1,10 @@
-FROM nginx:mainline
+FROM nginx:latest
 
 # support running as arbitrary user which belogs to the root group
-RUN chmod g+rwx /var/cache/nginx /var/run /var/log/nginx
+RUN chmod g+rwx /var/cache/nginx /var/run /var/log/nginx && chmod -R g+w /etc/nginx
 
-# users are not allowed to listen on priviliged ports
-# RUN sed -i.bak 's/listen\(.*\)80;/listen 8081;/' /etc/nginx/conf.d/default.conf
+# users are not allowed to listen on privileged ports
+RUN sed -i.bak 's/listen\(.*\)80;/listen 8081;/' /etc/nginx/nginx.conf
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
@@ -19,8 +19,8 @@ EXPOSE 4443
 EXPOSE 8081
 
 # comment user directive as master process is run as user in OpenShift anyhow
-RUN sed -i.bak 's/^user/#user/' /etc/nginx/nginx.conf
+# RUN sed -i.bak 's/^user/#user/' /etc/nginx/nginx.conf
 
-RUN addgroup nginx root
+# RUN addgroup nginx root
 
-USER nginx
+# USER nginx
